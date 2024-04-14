@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\coding\\vs\\teleport\\",
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\Documents\\GitHub\\TeleportYourself\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6903EFF3-7839-4CA9-862C-EA0A372128E6}|teleport\\teleport.csproj|d:\\coding\\vs\\teleport\\teleport\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6903EFF3-7839-4CA9-862C-EA0A372128E6}|teleport\\teleport.csproj|c:\\users\\admin\\documents\\github\\teleportyourself\\teleport\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6903EFF3-7839-4CA9-862C-EA0A372128E6}|teleport\\teleport.csproj|solutionrelative:teleport\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\coding\\vs\\teleport\\teleport\\Class1.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\GitHub\\TeleportYourself\\teleport\\Class1.cs",
               "RelativeDocumentMoniker": "teleport\\Class1.cs",
-              "ToolTip": "D:\\coding\\vs\\teleport\\teleport\\Class1.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\GitHub\\TeleportYourself\\teleport\\Class1.cs",
               "RelativeToolTip": "teleport\\Class1.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAAAFsAAAAFAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAADwvzkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-14T10:14:31.105Z",
               "EditorCaption": ""

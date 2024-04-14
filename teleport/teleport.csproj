@@ -32,19 +32,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\0Harmony.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\Assembly-CSharp.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\BepInEx.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\BepInEx.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx.Harmony">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\BepInEx.Harmony.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\BepInEx.Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -56,27 +56,31 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="Unity.InputSystem">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\Unity.InputSystem.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\Unity.InputSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Netcode.Runtime">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\Unity.Netcode.Runtime.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\Unity.Netcode.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\UnityEngine.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\UnityEngine.AudioModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\UnityEngine.InputLegacyModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\MyFirstBeplnExMod\libs\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\coding\vs\MyFirstBeplnExMod\libs\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

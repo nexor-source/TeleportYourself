@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\coding\\vs\\teleport\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6903EFF3-7839-4CA9-862C-EA0A372128E6}|teleport\\teleport.csproj|d:\\coding\\vs\\teleport\\teleport\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6903EFF3-7839-4CA9-862C-EA0A372128E6}|teleport\\teleport.csproj|solutionrelative:teleport\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\coding\\vs\\teleport\\teleport\\Class1.cs",
+              "RelativeDocumentMoniker": "teleport\\Class1.cs",
+              "ToolTip": "D:\\coding\\vs\\teleport\\teleport\\Class1.cs",
+              "RelativeToolTip": "teleport\\Class1.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAAAFsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T10:14:31.105Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

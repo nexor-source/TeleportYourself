@@ -1,0 +1,6 @@
+D:\coding\vs\teleport\teleport\bin\Debug\teleport.dll
+D:\coding\vs\teleport\teleport\bin\Debug\teleport.pdb
+D:\coding\vs\teleport\teleport\obj\Debug\teleport.csproj.AssemblyReference.cache
+D:\coding\vs\teleport\teleport\obj\Debug\teleport.csproj.CoreCompileInputs.cache
+D:\coding\vs\teleport\teleport\obj\Debug\teleport.dll
+D:\coding\vs\teleport\teleport\obj\Debug\teleport.pdb

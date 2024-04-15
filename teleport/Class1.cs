@@ -19,7 +19,7 @@ namespace TeleportYourself
     {
         private const string modGUID = "nexor.TeleportYourself";
         private const string modName = "TeleportYourself";
-        private const string modVersion = "0.0.4";
+        private const string modVersion = "0.0.5";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -44,13 +44,13 @@ namespace TeleportYourself
                                                "V",
                                                "The key used for teleporting. Letters must be capitalized. If it is an invalid value, the default V is used.(摁哪个键触发传送，字母必须大写，如果是无效值则会使用默认V)");
 
-/*            teleportCooldown = Config.Bind<float>("Teleport Yourself Config",
-                                               "Teleport Cooldown/seconds (传送冷却/秒)",
-                                               240,
-                                               "Negative numbers have no cooldown (负数则没有冷却)");*/
-            
+            /*            teleportCooldown = Config.Bind<float>("Teleport Yourself Config",
+                                                           "Teleport Cooldown/seconds (传送冷却/秒)",
+                                                           240,
+                                                           "Negative numbers have no cooldown (负数则没有冷却)");*/
+
             harmony.PatchAll();
-            ((TeleportYourself)this).Logger.LogInfo((object)"TeleportYourself 0.0.4 loaded.");
+            ((TeleportYourself)this).Logger.LogInfo((object)"TeleportYourself 0.0.5 loaded.");
         }
     }
 
@@ -58,8 +58,6 @@ namespace TeleportYourself
     internal class HUDPatch
     {
         private static Key teleportKey;
-/*        private static int myRadarTargetIndex;
-        private static ManualCameraRenderer myrenderer;*/
 
         static HUDPatch()
         {
@@ -91,7 +89,6 @@ namespace TeleportYourself
                     if (monoBehaviour != null)
                     {
                         monoBehaviour.StartCoroutine(DelayedTeleport());
-                        TeleportYourself.Instance.lastTeleportTime = Time.time;
                     }
                     else
                     {
@@ -106,20 +103,20 @@ namespace TeleportYourself
                 }
             }
 
-/*            // 如果按下了 J 键
-            if (Keyboard.current[Key.J].wasPressedThisFrame)
-            {
-                // 启动协程执行延迟操作
-                MonoBehaviour monoBehaviour = MonoBehaviour.FindObjectOfType<MonoBehaviour>();
-                if (monoBehaviour != null)
-                {
-                    monoBehaviour.StartCoroutine(DelayedTeleport());
-                }
-                else
-                {
-                    // Debug.LogError("Failed to find MonoBehaviour to start coroutine.");
-                }
-            }*/
+            /*            // 如果按下了 J 键
+                        if (Keyboard.current[Key.J].wasPressedThisFrame)
+                        {
+                            // 启动协程执行延迟操作
+                            MonoBehaviour monoBehaviour = MonoBehaviour.FindObjectOfType<MonoBehaviour>();
+                            if (monoBehaviour != null)
+                            {
+                                monoBehaviour.StartCoroutine(DelayedTeleport());
+                            }
+                            else
+                            {
+                                // Debug.LogError("Failed to find MonoBehaviour to start coroutine.");
+                            }
+                        }*/
         }
 
         // 延迟操作的协程
@@ -136,6 +133,9 @@ namespace TeleportYourself
                 // Debug.Log("Haven't found any valid teleporters.");
                 yield break;
             }
+
+            // 成功执行
+            TeleportYourself.Instance.lastTeleportTime = Time.time;
 
             // 获取当前目标玩家和其ID
             PlayerControllerB old = StartOfRound.Instance.mapScreen.targetedPlayer;
@@ -171,6 +171,19 @@ namespace TeleportYourself
         }
 
     }
-        
+
+
+    [HarmonyPatch(typeof(StartOfRound), "Awake")]
+    internal class StartOfRound_Awake_Patch
+    {
+        [HarmonyPostfix]
+        public static void Postfix()
+        {
+            // Debug.Log("PLAYER HAS NOW AWAKEN!!!!!");
+
+            TeleportYourself.Instance.lastTeleportTime = -TeleportYourself.Instance.teleportCooldown;
+
+        }
+
+    }
 }
-    

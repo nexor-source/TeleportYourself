@@ -8,6 +8,12 @@
 
 ## Changelog 修改日志
 
+v 0.0.5
+
+- Fixed the bug that the CD wouldn't reset when switching between rooms
+
+  修复了不同房间中切换时CD不会重置的bug
+
 v 0.0.4
 
 - Rewrote the teleport function so that the effects on your body when you teleport can now be seen by everyone, and fixed the bug where items could not be picked up after teleportation

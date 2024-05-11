@@ -19,7 +19,7 @@ namespace TeleportYourself
     {
         private const string modGUID = "nexor.TeleportYourself";
         private const string modName = "TeleportYourself";
-        private const string modVersion = "0.0.5";
+        private const string modVersion = "0.0.8";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -27,7 +27,7 @@ namespace TeleportYourself
         public static TeleportYourself Instance;
 
         // public ConfigEntry<float> teleportCooldown; // 传送的冷却时间，单位为秒
-        public float teleportCooldown = 240;
+        public float teleportCooldown = 4;
         public float lastTeleportTime;
 
         // 在插件启动时会直接调用Awake()方法
@@ -42,7 +42,7 @@ namespace TeleportYourself
             teleportKey = Config.Bind<string>("Teleport Yourself Config",
                                                "Teleport Key(传送键)",
                                                "V",
-                                               "The key used for teleporting. Letters must be capitalized. If it is an invalid value, the default V is used.(摁哪个键触发传送，字母必须大写，如果是无效值则会使用默认V)");
+                                               "Which key to press to trigger teleportation, supports letter keys and F1,F2... If the value is invalid then the default V will be used.(摁哪个键触发传送，支持字母键和F1,F2...如果是无效值则会使用默认V)");
 
             /*            teleportCooldown = Config.Bind<float>("Teleport Yourself Config",
                                                            "Teleport Cooldown/seconds (传送冷却/秒)",
@@ -50,7 +50,7 @@ namespace TeleportYourself
                                                            "Negative numbers have no cooldown (负数则没有冷却)");*/
 
             harmony.PatchAll();
-            ((TeleportYourself)this).Logger.LogInfo((object)"TeleportYourself 0.0.5 loaded.");
+            ((TeleportYourself)this).Logger.LogInfo((object)"TeleportYourself 0.0.8 loaded.");
         }
     }
 
@@ -65,7 +65,7 @@ namespace TeleportYourself
             TeleportYourself.Instance.lastTeleportTime = -TeleportYourself.Instance.teleportCooldown;
 
             // 将配置文件中的字符串表示形式转换为 Key
-            if (!(System.Enum.TryParse(TeleportYourself.Instance.teleportKey.Value, out teleportKey)))
+            if (!(System.Enum.TryParse(TeleportYourself.Instance.teleportKey.Value, true, out teleportKey)))
             {
                 // 如果解析失败，说明用户提供了无效的按键字符串
                 // Debug.LogError("Invalid teleport key: [" + TeleportYourself.Instance.teleportKey.Value+"]");
@@ -81,6 +81,11 @@ namespace TeleportYourself
             // 如果摁下传送键
             if (Keyboard.current[teleportKey].wasPressedThisFrame)
             {
+                PlayerControllerB you = StartOfRound.Instance.localPlayerController;
+
+                // 打字和终端不触发效果
+                if (you.isTypingChat || you.inTerminalMenu) return;
+
                 // 如果传送CD好了
                 if (Time.time - TeleportYourself.Instance.lastTeleportTime >= TeleportYourself.Instance.teleportCooldown)
                 {
@@ -103,20 +108,20 @@ namespace TeleportYourself
                 }
             }
 
-            /*            // 如果按下了 J 键
-                        if (Keyboard.current[Key.J].wasPressedThisFrame)
-                        {
-                            // 启动协程执行延迟操作
-                            MonoBehaviour monoBehaviour = MonoBehaviour.FindObjectOfType<MonoBehaviour>();
-                            if (monoBehaviour != null)
-                            {
-                                monoBehaviour.StartCoroutine(DelayedTeleport());
-                            }
-                            else
-                            {
-                                // Debug.LogError("Failed to find MonoBehaviour to start coroutine.");
-                            }
-                        }*/
+/*            // 如果按下了 J 键
+            if (Keyboard.current[Key.J].wasPressedThisFrame)
+            {
+                // 启动协程执行延迟操作
+                MonoBehaviour monoBehaviour = MonoBehaviour.FindObjectOfType<MonoBehaviour>();
+                if (monoBehaviour != null)
+                {
+                    monoBehaviour.StartCoroutine(DelayedTeleport());
+                }
+                else
+                {
+                    // Debug.LogError("Failed to find MonoBehaviour to start coroutine.");
+                }
+            }*/
         }
 
         // 延迟操作的协程

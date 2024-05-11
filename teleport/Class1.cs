@@ -11,6 +11,7 @@ using BepInEx.Configuration;
 
 using System;
 using System.Security.Cryptography;
+using System.CodeDom;
 
 namespace TeleportYourself
 {
@@ -19,7 +20,7 @@ namespace TeleportYourself
     {
         private const string modGUID = "nexor.TeleportYourself";
         private const string modName = "TeleportYourself";
-        private const string modVersion = "0.0.8";
+        private const string modVersion = "0.0.9";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -27,7 +28,7 @@ namespace TeleportYourself
         public static TeleportYourself Instance;
 
         // public ConfigEntry<float> teleportCooldown; // 传送的冷却时间，单位为秒
-        public float teleportCooldown = 4;
+        public float teleportCooldown = 240;
         public float lastTeleportTime;
 
         // 在插件启动时会直接调用Awake()方法
@@ -50,7 +51,7 @@ namespace TeleportYourself
                                                            "Negative numbers have no cooldown (负数则没有冷却)");*/
 
             harmony.PatchAll();
-            ((TeleportYourself)this).Logger.LogInfo((object)"TeleportYourself 0.0.8 loaded.");
+            ((TeleportYourself)this).Logger.LogInfo((object)"TeleportYourself "+modVersion+" loaded.");
         }
     }
 
@@ -89,16 +90,10 @@ namespace TeleportYourself
                 // 如果传送CD好了
                 if (Time.time - TeleportYourself.Instance.lastTeleportTime >= TeleportYourself.Instance.teleportCooldown)
                 {
-                    // 启动协程执行延迟操作
-                    MonoBehaviour monoBehaviour = MonoBehaviour.FindObjectOfType<MonoBehaviour>();
-                    if (monoBehaviour != null)
-                    {
-                        monoBehaviour.StartCoroutine(DelayedTeleport());
-                    }
-                    else
-                    {
-                        // Debug.LogError("Failed to find MonoBehaviour to start coroutine.");
-                    }
+                    // 如果此时传送器没有在执行传送任务，则启动协程执行延迟操作
+                    
+                    you.StartCoroutine(DelayedTeleport());
+
                 }
                 // 如果传送CD没好
                 else
@@ -108,20 +103,6 @@ namespace TeleportYourself
                 }
             }
 
-/*            // 如果按下了 J 键
-            if (Keyboard.current[Key.J].wasPressedThisFrame)
-            {
-                // 启动协程执行延迟操作
-                MonoBehaviour monoBehaviour = MonoBehaviour.FindObjectOfType<MonoBehaviour>();
-                if (monoBehaviour != null)
-                {
-                    monoBehaviour.StartCoroutine(DelayedTeleport());
-                }
-                else
-                {
-                    // Debug.LogError("Failed to find MonoBehaviour to start coroutine.");
-                }
-            }*/
         }
 
         // 延迟操作的协程
@@ -135,7 +116,15 @@ namespace TeleportYourself
             // 如果没有找到有效传送器，结束协程
             if (teleporters.Count == 0)
             {
-                // Debug.Log("Haven't found any valid teleporters.");
+                HUDManager.Instance.DisplayTip("Warning!", "No Teleporter!");
+                yield break;
+            }
+
+            // 如果找到的传送器它按钮正在冷却中，则返回
+
+            if (!teleporters[0].buttonTrigger.interactable)
+            {
+                HUDManager.Instance.DisplayTip("Warning!", "Teleport Button cant be used right now.");
                 yield break;
             }
 
